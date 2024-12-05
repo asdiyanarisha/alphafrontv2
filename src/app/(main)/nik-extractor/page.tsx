@@ -160,9 +160,9 @@ const NikExtractorPage: React.FC = () => {
                             </div>
                         </form>
                     </CardContent>
-                    <CardFooter className="flex justify-between">
-                        <Button variant="outline">Cancel</Button>
-                        <Button>Deploy</Button>
+                    <CardFooter className="flex justify-between space-x-2">
+                        <Button variant="outline" className="w-1/4">Cancel</Button>
+                        <Button className="w-3/4 ">Generate</Button>
                     </CardFooter>
                 </Card>
             </div>
