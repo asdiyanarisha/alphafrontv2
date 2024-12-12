@@ -35,7 +35,7 @@ const Navbar = () => {
                         <span key={"item-"+data.id}>
                             <NavigationMenuItem>
                                 <NavigationMenuLink key={"link-"+data.id}
-                                                    className="NavigationMenuLink px-2 py-2
+                                                    className="NavigationMenuLink px-4 py-3
                                                     text-black underline underline-offset-4 decoration-1 decoration-black
                                                     hover:text-white hover:underline hover:underline-offset-4 hover:decoration-1 hover:decoration-white hover:bg-black hover:rounded-md hover:shadow-lg"
                                                     href="https://github.com/radix-ui"
