@@ -9,18 +9,14 @@ import "./styles.css";
 const datas: {title: string, id: number}[] = [
     {
         id: 1,
-        title: "Home",
-    },
-    {
-        id: 2,
         title: "Work",
     },
     {
-        id: 3,
+        id: 2,
         title: "Blogs",
     },
     {
-        id: 4,
+        id: 3,
         title: "Projects",
     }
 ];
