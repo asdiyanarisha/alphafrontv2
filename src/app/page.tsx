@@ -1,6 +1,6 @@
-// import Image from "next/image";
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { LinkedInLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons"
 
 export default function Home() {
   return (
@@ -24,15 +24,15 @@ export default function Home() {
           </div>
 
           <div className="mt-52 pt-36">
-              <div className="flex items-center justify-center font-sans">
-                  <div className="flex flex-col w-1/2">
-                      <div className="w-1/2">
+              <div className="flex items-center justify-center font-sans bg-black text-white">
+                  <div className="w-1/2 my-20">
+                      <div className="flex flex-row justify-center">
                           <Avatar className="w-[10rem] h-[10rem]">
                               <AvatarImage src="https://avatars.githubusercontent.com/u/19662749?v=4"/>
                               <AvatarFallback>RAR</AvatarFallback>
                           </Avatar>
                       </div>
-                      <div className="">
+                      <div className="my-5">
                           <p className="text-xl text-wrap">As a backend engineer, I specialize in developing secure,
                               scalable,
                               and
@@ -44,6 +44,12 @@ export default function Home() {
                               languages like Golang, Python, and Node.js, with a focus on delivering clean,
                               maintainable
                               code.</p>
+                      </div>
+                      <div className="flex pt-6 pb-3 justify-center" id="icon">
+                          <div className="flex flex-row gap-4 w-1/2 justify-center">
+                              <LinkedInLogoIcon className="h-8 w-8"/>
+                              <GitHubLogoIcon className="h-8 w-8"/>
+                          </div>
                       </div>
                   </div>
               </div>
