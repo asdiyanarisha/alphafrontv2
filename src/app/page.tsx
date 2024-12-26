@@ -1,6 +1,6 @@
 import Welcome from "@/components/sections/home/welcome"
 import Summary from "@/components/sections/home/summary";
-import MySkill from "@/components/sections/home/my-skill";
+import Headline from "@/components/sections/home/my-skill";
 
 export default function Home() {
   return (
@@ -8,7 +8,7 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center">
               <Welcome/>
               <Summary/>
-              <MySkill/>
+              <Headline/>
           </div>
       </>
 
