@@ -153,8 +153,11 @@ const MySkill = () => {
                                     <div
                                         className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">Docker
                                     </div>
-                                    <div className="w-full text-xs text-zinc-500 dark:text-zinc-400">
-                                        <Progress value={90}/>
+                                    <div className="w-full flex flex-row">
+                                        <div className="basis-11/12 pt-1 text-xs text-zinc-500 dark:text-zinc-400 overflow-visible">
+                                            <Progress value={90}/>
+                                        </div>
+                                        <div className="basis-1/12 font-bold text-right text-xs text-black dark:text-zinc-500">90</div>
                                     </div>
                                 </div>
                             </li>
