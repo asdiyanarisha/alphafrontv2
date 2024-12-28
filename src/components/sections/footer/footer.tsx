@@ -1,61 +1,24 @@
 import Image from "next/image";
 
-
 const Footer = () => {
     return (
-        <>
-            <section className="h-screen"></section>
-            <section className="mt-auto">
-                <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center mt-auto">
-                    <a
-                        className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-                        href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <Image
-                            aria-hidden
-                            src="/file.svg"
-                            alt="File icon"
-                            width={16}
-                            height={16}
-                        />
-                        Learn
-                    </a>
-                    <a
-                        className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-                        href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <Image
-                            aria-hidden
-                            src="/window.svg"
-                            alt="Window icon"
-                            width={16}
-                            height={16}
-                        />
-                        Examples
-                    </a>
-                    <a
-                        className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-                        href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <Image
-                            aria-hidden
-                            src="/globe.svg"
-                            alt="Globe icon"
-                            width={16}
-                            height={16}
-                        />
-                        Go to nextjs.org →
-                    </a>
+        <section className="flex justify-center mt-auto">
+            <div className="w-2/3 bg-black rounded-t-lg shadow-lg">
+                <footer className="row-start-3 mt-4 mb-3 pt-1">
+                    <div className="flex flex-row justify-between items-center mx-20 text-sm font-sans">
+                        <div className="text-white">© 2024 By Risha Asdiyana Rifi | All Right Reserved.</div>
+                        <div className="flex flex-row text-white gap-2">
+                            <div className="mt-1">
+                                Made with
+                            </div>
+                            <div className="bg-white rounded-full w-7 border border-gray-300 bg-white">
+                                <Image src="/nextjs.svg" alt="" width="30" height="30"/>
+                            </div>
+                        </div>
+                    </div>
                 </footer>
-            </section>
-        </>
-
+            </div>
+        </section>
     );
 };
 
