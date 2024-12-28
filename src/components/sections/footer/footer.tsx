@@ -11,7 +11,7 @@ const Footer = () => {
                             <div className="mt-1">
                                 Made with
                             </div>
-                            <div className="bg-white rounded-full w-7 border border-gray-300 bg-white">
+                            <div className="rounded-full w-7 border border-gray-300 bg-white">
                                 <Image src="/nextjs.svg" alt="" width="30" height="30"/>
                             </div>
                         </div>
