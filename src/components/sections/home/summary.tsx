@@ -1,10 +1,27 @@
+'use client'
+
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 import {GitHubLogoIcon, LinkedInLogoIcon} from "@radix-ui/react-icons";
-
+import {useEffect, useRef, useState} from 'react';
+import "./styles.css";
 
 const Summary = () => {
+    const [isVisible, setVisible] = useState(false);
+    const domRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => setVisible(entry.isIntersecting));
+        });
+
+        if (domRef.current) {
+            observer.observe(domRef.current);
+        }
+
+    }, []);
+
     return (
-        <div className="mt-52 pt-36 shadow-2xl">
+        <div ref={domRef} className={`mt-52 pt-36 shadow-2xl fade-in-section ${isVisible ? 'is-visible' : ''}`}>
             <div className="flex items-center justify-center font-sans bg-black text-white">
                 <div className="w-1/2 my-20">
                     <div className="flex flex-row justify-center">
