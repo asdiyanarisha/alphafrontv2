@@ -1,5 +1,6 @@
 import {Button} from "@/components/ui/button";
 import "./styles.css";
+import Link from "next/link";
 
 const Welcome = () => {
     return (
@@ -12,8 +13,8 @@ const Welcome = () => {
                     </h1>
                     <p className="text-lg mt-1">Code. Optimize. Scale. Deliver.</p>
                     <div className="flex flex-row mt-5 gap-2 justify-center">
-                        <Button className="border-black rounded-none bg-white border-2 text-black hover:text-white">View
-                            My Work</Button>
+                        <Link href={`/works`} className="text-sm px-4 py-1.5 hover:bg-black border-black rounded-none bg-white border-2 text-black hover:text-white align-middle">
+                            <span className="mt-10">View My Work</span></Link>
                         <Button className="border-black rounded-none hover:bg-white hover:border-2 hover:text-black">My
                             Latest Blog</Button>
                     </div>
