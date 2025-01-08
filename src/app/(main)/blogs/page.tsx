@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Blogs: React.FC = () => {
     return (
-        <div className="my-20 container flex justify-center">
+        <div className="mt-20 min-h-screen container flex flex-row justify-center">
             <div className="w-4/5 flex flex-row">
                 <div className="w-3/4" id="list-blog">
                     <h1>Blogs</h1>

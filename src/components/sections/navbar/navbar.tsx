@@ -38,7 +38,7 @@ const Navbar = () => {
     console.log(pathName)
 
     return (
-        <NavigationMenu className="flex justify-center mx-auto pt-5 px-3">
+        <NavigationMenu className="flex justify-center mx-auto pt-5 px-3 h-10">
             <NavigationMenuList>
                 {datas.map((data) =>
                     (

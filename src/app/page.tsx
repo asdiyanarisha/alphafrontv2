@@ -5,7 +5,7 @@ import Headline from "@/components/sections/home/headline";
 export default function Home() {
   return (
       <>
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center mb-auto">
               <Welcome/>
               <Summary/>
               <Headline/>
