@@ -4,11 +4,13 @@ import Link from "next/link";
 const Blogs: React.FC = () => {
     return (
         <div className="mt-20 min-h-screen container flex flex-row justify-center">
-            <div className="w-4/5 flex flex-row">
-                <div className="w-3/4" id="list-blog">
-                    <h1>Blogs</h1>
+            <div className="w-3/4 flex flex-row">
+                <div className="w-full" id="list-blog">
+                    <div className="flex justify-center my-10">
+                        <h1 className="text-4xl font-bold font-sans text-slate-600">Blogs</h1>
+                    </div>
                     <div className="flex flex-wrap -mx-2">
-                        <div className="w-full sm:w-1/2 md:w-1/3 self-stretch p-2 mb-2">
+                    <div className="w-full sm:w-1/2 md:w-1/3 self-stretch p-2 mb-2">
                             <div className="rounded shadow-md h-full">
                                 <Link href="/blogs/cobagas">
                                     <Image className="w-full m-0 rounded-t lazy" src="/typography.png" width="100"
@@ -53,9 +55,6 @@ const Blogs: React.FC = () => {
                         </div>
 
                     </div>
-                </div>
-                <div className="w-1/4" id="list category">
-                    <h1>Categories</h1>
                 </div>
             </div>
         </div>
