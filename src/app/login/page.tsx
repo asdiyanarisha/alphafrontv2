@@ -1,34 +1,123 @@
+'use client'
+
+import React, {useState} from "react";
+import {Input} from "@/components/ui/input";
+import {Button} from "@/components/ui/button";
+
+interface errorFormLogin {
+    email?: string;
+    password?: string;
+}
+
+interface formDataInterface {
+    email?: string;
+    password?: string;
+}
 
 const Login: React.FC = () => {
+    const [formData, setFormData] = useState<formDataInterface>({});
+    const [isDisableSubmit, setIsDisableSubmit] = useState(true);
+    const [isDisablePassword, setIsDisablePassword] = useState(true);
+    const [error, setError] = useState<errorFormLogin>({});
+
+    const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const {name, value} = e.target;
+        if (name == 'email') {
+            await handleEmail(value);
+        }
+
+        if (name == 'password') {
+            await handlePassword(value);
+        }
+
+        let isDisableSubmit = true;
+        if (error.email == undefined) {
+            isDisableSubmit = false;
+        }
+
+        if (error.password == undefined  && !isDisableSubmit)  {
+            isDisableSubmit = false;
+        }
+
+        if (formData.email != undefined && formData.password != undefined && !isDisableSubmit) {
+            console.log(formData, isDisableSubmit);
+            setIsDisableSubmit(isDisableSubmit);
+        }
+    }
+
+    const handleEmail = async (value: string) => {
+        if (value == "") {
+            setError({...error, email: "Please enter a valid email !"});
+        } else {
+            const regexEmail = new RegExp("^[A-z.]{1,100}\\@[A-z]{1,10}\\.[A-z]{1,5}", "gm");
+            if (!regexEmail.test(value)) {
+                setError({...error, email: "Invalid email address !"});
+            } else {
+                setError({...error, email: undefined});
+                setFormData({...formData, email: value});
+                setIsDisablePassword(false);
+            }
+        }
+    }
+
+    const handlePassword = async (value: string) => {
+        if (value == "") {
+            setError({...error, password: "Please fill the password !"});
+        } else {
+            const rePassword = new RegExp("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$", "gm");
+            if (!rePassword.test(value)) {
+                setError({...error, password: "Minimum 6 characters, at least 1 letter and 1 number!"});
+            } else {
+                setError({...error, password: undefined});
+                setFormData({...formData, password: value});
+            }
+        }
+    }
+
     return (
-        <div className="min-h-screen flex items-center justify-center w-full dark:bg-gray-950">
-            <div className="bg-white dark:bg-gray-900 shadow-md rounded-lg px-8 py-6 max-w-md">
-                <h1 className="text-2xl font-bold text-center mb-4 dark:text-gray-200">Welcome Back!</h1>
-                <form action="#">
-                    <div className="mb-4">
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
-                        <input type="email" id="email" className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="your@email.com" required/>
+        <section className="bg-gray-50 dark:bg-gray-900">
+            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+                <div
+                    className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                    <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+                        <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                            Sign in to your account
+                        </h1>
+                        <form className="space-y-4 md:space-y-6" action="#">
+                            <div>
+                                <label htmlFor="email"
+                                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                                    email</label>
+                                <Input type="email" name="email" id="email"
+                                       onChange={handleChange}
+                                       className="
+                                       h-10 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-slate-600
+                                       focus:border-slate-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                       placeholder="name@company.com"/>
+                                {error.email &&
+                                    <p className='text-sm mt-1 text-red-500'>{error.email}</p>}
+                            </div>
+                            <div>
+                            <label htmlFor="password"
+                                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                                <Input type="password" name="password" id="password" onChange={handleChange} placeholder="••••••••" disabled={isDisablePassword}
+                                       className="h-10 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                />
+                                {error.password &&
+                                    <p className='text-sm mt-1 text-red-500'>{error.password}</p>}
+                            </div>
+                            <Button type="submit"
+                                    size="default"
+                                    className={`w-full text-white bg-slate-950 hover:bg-slate-700 focus:ring-4
+                                    focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5
+                                    text-center dark:bg-slate-600 dark:hover:bg-primary-700 dark:focus:ring-slate-800`}
+                                    disabled={isDisableSubmit}
+                            >Sign in</Button>
+                        </form>
                     </div>
-                    <div className="mb-4">
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
-                        <input type="password" id="password" className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter your password" required/>
-                            <a href="#"
-                               className="text-xs text-gray-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Forgot
-                                Password?</a>
-                    </div>
-                    <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center">
-                            <input type="checkbox" id="remember" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 focus:outline-none" checked/>
-                                <label htmlFor="remember" className="ml-2 block text-sm text-gray-700 dark:text-gray-300">Remember me</label>
-                        </div>
-                        <a href="#"
-                           className="text-xs text-indigo-500 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Create
-                            Account</a>
-                    </div>
-                    <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Login</button>
-                </form>
+                </div>
             </div>
-        </div>
+        </section>
     );
 }
 
