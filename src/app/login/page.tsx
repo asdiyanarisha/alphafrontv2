@@ -3,6 +3,10 @@
 import React, {useState} from "react";
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
+import LoginSubmitAction from "@/api/auth";
+import { useToast } from "@/hooks/use-toast"
+import {ToasterCustom} from "@/components/ui/toaster"
+import {cn} from "@/lib/utils";
 
 interface errorFormLogin {
     email?: string;
@@ -19,6 +23,7 @@ const Login: React.FC = () => {
     const [isDisableSubmit, setIsDisableSubmit] = useState(true);
     const [isDisablePassword, setIsDisablePassword] = useState(true);
     const [error, setError] = useState<errorFormLogin>({});
+    const { toast } = useToast()
 
     const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
@@ -43,6 +48,26 @@ const Login: React.FC = () => {
             console.log(formData, isDisableSubmit);
             setIsDisableSubmit(isDisableSubmit);
         }
+    }
+
+    const submitLogin = async () => {
+        const res = await LoginSubmitAction(formData.email!, formData.password!);
+        if (res.code == 401) {
+            await triggerToast("Invalid email or password")
+            return
+        }
+    }
+
+    const triggerToast = async (message: string) => {
+        toast({
+            title: "Failed",
+            description: message,
+            variant: "destructive",
+            duration: 1000,
+            className: cn(
+                'top-0 right-0 flex fixed md:max-w-[420px] md:top-4 md:right-4'
+            ),
+        })
     }
 
     const handleEmail = async (value: string) => {
@@ -83,7 +108,7 @@ const Login: React.FC = () => {
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                             Sign in to your account
                         </h1>
-                        <form className="space-y-4 md:space-y-6" action="#">
+                        <div className="space-y-4 md:space-y-6">
                             <div>
                                 <label htmlFor="email"
                                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
@@ -106,17 +131,18 @@ const Login: React.FC = () => {
                                 {error.password &&
                                     <p className='text-sm mt-1 text-red-500'>{error.password}</p>}
                             </div>
-                            <Button type="submit"
+                            <Button onClick={submitLogin}
                                     size="default"
                                     className={`w-full text-white bg-slate-950 hover:bg-slate-700 focus:ring-4
                                     focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5
                                     text-center dark:bg-slate-600 dark:hover:bg-primary-700 dark:focus:ring-slate-800`}
                                     disabled={isDisableSubmit}
                             >Sign in</Button>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
+            <ToasterCustom />
         </section>
     );
 }

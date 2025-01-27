@@ -1,0 +1,4 @@
+.ToastRoot[data-swipe="start"] {
+    transform: translateY(0);
+    /*transform: translateX(var(--radix-toast-swipe-move-x));*/
+}
