@@ -25,16 +25,16 @@ const Works: React.FC = () => {
                 <ul className="divide-y font-sans">
                     {
                         MyWorks.map((item, index) => (
-                            <li className="flex flex-col mb-5" key={"work-" + index}>
+                            <li className="flex flex-col my-8" key={"work-" + index}>
                                 <div className="flex justify-between mt-8">
                                     <div className="font-bold">{item.companyName}</div>
                                     <div className="text-xs">{item.period}</div>
                                 </div>
                                 <div className="mt-3 text-sm">{item.role}</div>
-                                <ul className="mt-2 list-disc pl-10 text-sm">
+                                <ul className="mt-2 list-disc pl-10 text-sm font-normal">
                                     {
                                         item.descriptions.map((desc, indexDesc) => (
-                                            <li className="mt-1.5"  key={"desc-" + indexDesc}>
+                                            <li className="my-2.5"  key={"desc-" + indexDesc}>
                                                 {desc}
                                             </li>
                                         ))

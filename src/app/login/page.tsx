@@ -7,6 +7,7 @@ import LoginSubmitAction from "@/api/auth";
 import { useToast } from "@/hooks/use-toast"
 import {ToasterCustom} from "@/components/ui/toaster"
 import {cn} from "@/lib/utils";
+import {redirect} from "next/navigation";
 
 interface errorFormLogin {
     email?: string;
@@ -56,6 +57,8 @@ const Login: React.FC = () => {
             await triggerToast("Invalid email or password")
             return
         }
+
+        redirect('/admin');
     }
 
     const triggerToast = async (message: string) => {
