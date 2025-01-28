@@ -46,7 +46,6 @@ const Login: React.FC = () => {
         }
 
         if (formData.email != undefined && formData.password != undefined && !isDisableSubmit) {
-            console.log(formData, isDisableSubmit);
             setIsDisableSubmit(isDisableSubmit);
         }
     }
