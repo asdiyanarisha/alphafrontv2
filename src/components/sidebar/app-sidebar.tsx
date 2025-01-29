@@ -1,4 +1,6 @@
-import {LayoutDashboard, NotebookText,  Settings} from "lucide-react"
+'use client'
+
+import {AlignRight, LayoutDashboard, NotebookText, Settings} from "lucide-react"
 
 import {
     Sidebar,
@@ -8,27 +10,35 @@ import {
     SidebarGroupLabel, SidebarHeader,
     SidebarMenu,
     SidebarMenuButton,
-    SidebarMenuItem,
+    SidebarMenuItem, useSidebar,
 } from "@/components/ui/sidebar"
 
 // Menu items.
 const items = [
     {
         title: "Dashboard",
-        url: "admin/",
+        url: "/admin",
         icon: LayoutDashboard,
     },
     {
         title: "Blogs",
-        url: "admin/blogs",
+        url: "/admin/blogs",
         icon: NotebookText,
     },
     {
         title: "Settings",
-        url: "#",
+        url: "/admin/settings",
         icon: Settings,
     },
 ]
+
+export function CustomTrigger() {
+    const { toggleSidebar } = useSidebar();
+
+    return <button onClick={toggleSidebar} className="ml-5">
+        <AlignRight/>
+    </button>
+}
 
 export function AppSidebar() {
     return (

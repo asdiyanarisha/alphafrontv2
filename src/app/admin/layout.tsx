@@ -1,5 +1,5 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
-import { AppSidebar } from '@/components/sidebar/app-sidebar';
+import { SidebarProvider } from "@/components/ui/sidebar"
+import {AppSidebar, CustomTrigger} from '@/components/sidebar/app-sidebar';
 import type {Metadata} from "next";
 
 export const metadata: Metadata = {
@@ -11,8 +11,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     return (
         <SidebarProvider>
             <AppSidebar />
-            <main>
-                <SidebarTrigger className="text-2xl"/>
+            <main className="w-full bg-gray-300">
+                {/*<SidebarTrigger className="text-2xl" size="lg"/>*/}
+                <header className="flex h-16 shrink-0 items-center gap-2 bg-white dark:shadow-2xl">
+                    <div className="w-full">
+                        <CustomTrigger/>
+                    </div>
+                </header>
+
                 {children}
             </main>
         </SidebarProvider>
