@@ -1,0 +1,7 @@
+.col-table {
+    @apply p-2 w-1/6 whitespace-nowrap
+}
+
+.col-title {
+    @apply p-2 w-3/6 whitespace-nowrap
+}
