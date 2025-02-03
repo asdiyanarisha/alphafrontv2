@@ -3,8 +3,6 @@ import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} f
 import Link from "next/link";
 import {CirclePlus, Ellipsis} from "lucide-react";
 
-import "./styles.css";
-
 const Blogs: React.FC = async () => {
     return (
         <div className="w-full relative h-full flex flex-auto flex-col px-4 sm:px-6 py-4 sm:py-6 md:px-8">
@@ -20,8 +18,7 @@ const Blogs: React.FC = async () => {
                     </div>
                     <div className="pr-2">
                         <Link className="flex flex-row px-4 py-2.5 min-w-[120px] text-[16px] text-center text-slate-900 border border-slate-800 rounded-md hover:bg-slate-800 hover:text-white active:bg-indigo-500 focus:outline-none focus:ring"
-                           href="/download">
-                            {/*<span><CirclePlus/></span>*/}
+                           href="/admin/blogs/create">
                             <CirclePlus size="16" className="mt-1 mr-1"/>
                             <span>Create a post</span>
                         </Link>
