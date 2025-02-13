@@ -2,14 +2,16 @@
 
 import React, {useMemo, useState} from "react";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
-import ReactQuill from 'react-quill-new';
+// import ReactQuill from 'react-quill-new';
 import { TagsInput } from "react-tag-input-component";
 import 'react-quill/dist/quill.snow.css';
 import './styles.css'
-
+import dynamic from "next/dynamic";
 
 
 const CreateBlogs: React.FC = () => {
+    const ReactQuill = useMemo(() => dynamic(() => import('react-quill-new'), { ssr: false }),[]);
+
     let selectLocalImage;
     const modules = useMemo(() => ({
         toolbar: {
