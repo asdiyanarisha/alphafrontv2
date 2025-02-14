@@ -2,8 +2,8 @@
 
 import React, {useMemo, useState} from "react";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
-// import ReactQuill from 'react-quill-new';
 import { TagsInput } from "react-tag-input-component";
+import {Input} from "@/components/ui/input";
 import 'react-quill/dist/quill.snow.css';
 import './styles.css'
 import dynamic from "next/dynamic";
@@ -28,7 +28,7 @@ const CreateBlogs: React.FC = () => {
     }), [selectLocalImage])
 
 
-    const [selected, setSelected] = useState(["golang"]);
+    const [selected, setSelected] = useState(["learn"]);
     const [value, setValue] = useState('');
 
     console.log(value);
@@ -57,21 +57,26 @@ const CreateBlogs: React.FC = () => {
                                     </div>
                                     <div className="flex flex-col">
                                         <label className="leading-loose">Content</label>
-                                        <ReactQuill theme="snow" value={value} onChange={setValue} modules={modules} />
+                                        <ReactQuill theme="snow" value={value} onChange={setValue} modules={modules}/>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <label className="leading-loose">Header Image</label>
+                                        <div>
+                                            <Input type="file"
+                                                   className="h-10 px-3 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"/>
+                                        </div>
                                     </div>
                                     <div className="flex flex-col">
                                         <label className="leading-loose">Tags</label>
-                                        {/*<input type="text"*/}
-                                        {/*       className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"*/}
-                                        {/*       placeholder="Optional"/>*/}
-                                        <TagsInput value={selected} onChange={setSelected} classNames={{tag: 'input-tag'}}/>
+                                        <TagsInput value={selected} onChange={setSelected}
+                                                   classNames={{tag: 'input-tag'}}/>
 
                                     </div>
                                 </div>
                                 <div className="pt-4 flex items-center space-x-4">
                                     <button
                                         className="flex justify-center items-center w-full text-gray-900 px-4 py-3 rounded-md focus:outline-none ring-1 shadow-md">
-                                        <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor"
+                                    <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor"
                                              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                             <path strokeLinecap="round" strokeLinejoin="round"
                                                   strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
