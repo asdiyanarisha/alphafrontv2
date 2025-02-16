@@ -7,6 +7,16 @@ import {Input} from "@/components/ui/input";
 import 'react-quill/dist/quill.snow.css';
 import './styles.css'
 import dynamic from "next/dynamic";
+import {Button} from "@/components/ui/button";
+import StorePostBlog from "@/api/blog";
+import { getCookie } from "cookies-next";
+
+export interface BodyFormData {
+    title: string;
+    content: string;
+    tags: string[];
+    file: File | null;
+}
 
 
 const CreateBlogs: React.FC = () => {
@@ -27,11 +37,41 @@ const CreateBlogs: React.FC = () => {
         }
     }), [selectLocalImage])
 
+    const [formData, setFormData] = useState<BodyFormData>({
+            content: "", file: null, tags: [], title: ""}
+    );
 
-    const [selected, setSelected] = useState(["learn"]);
-    const [value, setValue] = useState('');
+    const onSubmit = () => {
+        StorePostBlog(formData).then(
+            async function (response) {
+                console.log('Alhamdulillah', response);
+            }
+        );
+    }
 
-    console.log(value);
+    const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const {name, value} = e.target;
+        if (name === 'title') {
+            setFormData({...formData, title: value});
+        }
+    }
+
+    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files[0]) {
+            setFormData(prev => ({
+                ...prev,
+                file: e.target.files![0]
+            }));
+        }
+    }
+
+    const handleContent = async (value: string) => {
+        setFormData({...formData, content: value});
+    }
+
+    const handleTags = async (values: string[]) => {
+        setFormData({...formData, tags: values});
+    }
 
     return (
         <div className="w-full relative h-full flex flex-auto flex-col px-4 sm:px-6 py-4 sm:py-6 md:px-8">
@@ -53,39 +93,38 @@ const CreateBlogs: React.FC = () => {
                                         <label className="leading-loose">Title</label>
                                         <input type="text"
                                                className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
-                                               placeholder="Event title"/>
+                                               placeholder="Event title" onChange={handleInputChange} name="title"/>
                                     </div>
                                     <div className="flex flex-col">
                                         <label className="leading-loose">Content</label>
-                                        <ReactQuill theme="snow" value={value} onChange={setValue} modules={modules}/>
+                                        <ReactQuill theme="snow" value={formData.content} onChange={handleContent} modules={modules}/>
                                     </div>
                                     <div className="flex flex-col">
                                         <label className="leading-loose">Header Image</label>
                                         <div>
                                             <Input type="file"
-                                                   className="h-10 px-3 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"/>
+                                                   className="h-10 px-3 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                                            onChange={handleFileChange} name="file"/>
                                         </div>
                                     </div>
                                     <div className="flex flex-col">
                                         <label className="leading-loose">Tags</label>
-                                        <TagsInput value={selected} onChange={setSelected}
-                                                   classNames={{tag: 'input-tag'}}/>
-
+                                        <TagsInput value={formData.tags} onChange={handleTags} classNames={{tag: 'input-tag'}}/>
                                     </div>
                                 </div>
                                 <div className="pt-4 flex items-center space-x-4">
-                                    <button
-                                        className="flex justify-center items-center w-full text-gray-900 px-4 py-3 rounded-md focus:outline-none ring-1 shadow-md">
+                                    <Button
+                                        className="bg-white flex justify-center items-center w-full text-gray-900 px-4 py-3 rounded-md focus:outline-none ring-1 shadow-md">
                                     <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor"
                                              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                             <path strokeLinecap="round" strokeLinejoin="round"
                                                   strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                                         </svg>
                                         Cancel
-                                    </button>
-                                    <button
-                                        className="bg-blue-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none shadow-md">Create
-                                    </button>
+                                    </Button>
+                                    <Button
+                                        className="bg-blue-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none shadow-md" onClick={onSubmit}>Create
+                                    </Button>
                                 </div>
                             </div>
                         </div>
