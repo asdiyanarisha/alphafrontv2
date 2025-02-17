@@ -9,7 +9,10 @@ import './styles.css'
 import dynamic from "next/dynamic";
 import {Button} from "@/components/ui/button";
 import StorePostBlog from "@/api/blog";
-import { getCookie } from "cookies-next";
+import {useToast} from "@/hooks/use-toast";
+import {cn} from "@/lib/utils";
+import {redirect} from "next/navigation";
+import {ToasterCustom} from "@/components/ui/toaster";
 
 export interface BodyFormData {
     title: string;
@@ -21,6 +24,7 @@ export interface BodyFormData {
 
 const CreateBlogs: React.FC = () => {
     const ReactQuill = useMemo(() => dynamic(() => import('react-quill-new'), { ssr: false }),[]);
+    const { toast } = useToast()
 
     let selectLocalImage;
     const modules = useMemo(() => ({
@@ -43,8 +47,20 @@ const CreateBlogs: React.FC = () => {
 
     const onSubmit = () => {
         StorePostBlog(formData).then(
-            async function (response) {
-                console.log('Alhamdulillah', response);
+            async function () {
+                toast({
+                    title: "success",
+                    description: "create a post is success!",
+                    variant: "default",
+                    duration: 3000,
+                    className: cn(
+                        'top-0 right-0 flex fixed md:max-w-[420px] md:top-4 md:right-4'
+                    ),
+                })
+
+                setTimeout(() => {
+                    redirect('/admin/blogs');
+                }, 4000);
             }
         );
     }
@@ -131,6 +147,7 @@ const CreateBlogs: React.FC = () => {
                     </div>
                 </CardContent>
             </Card>
+            <ToasterCustom />
         </div>
     )
 };
