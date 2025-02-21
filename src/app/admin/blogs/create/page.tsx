@@ -8,7 +8,7 @@ import 'react-quill/dist/quill.snow.css';
 import './styles.css'
 import dynamic from "next/dynamic";
 import {Button} from "@/components/ui/button";
-import StorePostBlog from "@/api/blog";
+import {StorePostBlog} from "@/api/blog";
 import {useToast} from "@/hooks/use-toast";
 import {cn} from "@/lib/utils";
 import {redirect} from "next/navigation";

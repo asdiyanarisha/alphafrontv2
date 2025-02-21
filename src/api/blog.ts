@@ -5,7 +5,7 @@ import {BodyFormData} from "@/app/admin/blogs/create/page";
 import { cookies } from 'next/headers'
 
 
-async function StorePostBlog (formDataRaw: BodyFormData) {
+export async function StorePostBlog (formDataRaw: BodyFormData) {
     const cookieStore = await cookies()
     const session = cookieStore.get('session');
 
@@ -35,4 +35,16 @@ async function StorePostBlog (formDataRaw: BodyFormData) {
     });
 }
 
-export default StorePostBlog;
+export async function GetPublicBlog(slug: string | Array<string> | undefined) {
+    return await axiosInstance.get("/blog/public/"+slug, {}).
+    then(async function (response) {
+        return response.data;
+    }).catch(function (err) {
+        if (err.response.status == 401) {
+            return {code: err.response.status, status: "unauthenticated"};
+        }
+
+        return {code: err.response.status, status: "failed"};
+    });
+}
+
