@@ -34,8 +34,11 @@ const datas: {title: string, id: number, route: string}[] = [
 ];
 
 const Navbar = () => {
-    const pathName = usePathname() || '';
-    console.log(pathName)
+    let pathName = usePathname() || '';
+    const pathNameSplit = pathName.split("/")
+    if (pathNameSplit.length > 2) {
+        pathName = "/" + pathNameSplit[1]
+    }
 
     return (
         <NavigationMenu className="flex justify-center mx-auto pt-5 px-3 h-10">

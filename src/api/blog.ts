@@ -48,3 +48,16 @@ export async function GetPublicBlog(slug: string | Array<string> | undefined) {
     });
 }
 
+export async function GetPublicBlogs() {
+    return await axiosInstance.get("/blog/public/", {}).
+    then(async function (response) {
+        return response.data;
+    }).catch(function (err) {
+        if (err.response.status == 401) {
+            return {code: err.response.status, status: "unauthenticated"};
+        }
+
+        return {code: err.response.status, status: "failed"};
+    });
+}
+
