@@ -7,7 +7,7 @@ import {Blog} from "@/app/(main)/blogs/page";
 const CardBlog = ({ d }: {d: Blog}) => {
 
     return (
-        <div className="rounded-3xl w-full sm:w-1/2 md:w-1/3 self-stretch mb-2 hover:shadow-2xl border">
+        <div className="rounded-3xl xl:basis-1/4 lg:basis-1/3 self-stretch mx-1 mb-2 hover:shadow-2xl border shadow-lg border-1">
             <div className="h-full">
                 <Link href={'/blogs/' + d.slug} className="">
                     <div className="relative w-full">
