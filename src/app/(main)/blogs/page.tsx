@@ -8,8 +8,9 @@ export interface Blog {
     title: string;
     slug: string;
     url_image: string;
+    description: string;
     tags: string[];
-    createdAt: string;
+    created_at: string;
 }
 
 interface ResponseBlogs {
