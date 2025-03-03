@@ -13,7 +13,6 @@ export const MyWorks = [
                     "Optimizing application scalability and reliability to enhance user satisfaction.",
                     "Initiated unit test in every application to minimize possibility of the bugs"
                 ],
-                skills: ["Golang", "MySQL", "RabbitMQ"],
             },
             {
                 period: "Dec 2022 - Dec 2023",
@@ -22,9 +21,9 @@ export const MyWorks = [
                     "Migrating from laravel queue to rabbitmq for solving issue tracking shipping system not updated.",
                     "Optimized tracking shipment status with method pulling data from api shipping with hourly interval."
                 ],
-                skills: ["Golang", "MySQL", "RabbitMQ"],
             }
-        ]
+        ],
+        skills: ["Golang", "MySQL", "RabbitMQ", "Laravel", "MongoDB", "Elastic Search", "Redis", "PostgreSQL"],
     },
     {
         companyName: "Perveks",
@@ -33,12 +32,13 @@ export const MyWorks = [
                 period: "Feb 2023 - May 2023",
                 role: "Freelance Backend Engineer",
                 descriptions: [
+                    "Take research to finding best method of ocr for excellent result when the model read the document.",
                     "Build application for read ship cargo documents with OCR method and Tesseract for extracting image " +
-                    "to text"
-                ],
-                skills: ["Golang", "PostgreSQL", "GCP", "Tesseract", "OCR"],
+                    "to text",
+                ]
             }
-        ]
+        ],
+        skills: ["Golang", "PostgreSQL", "GCP", "Tesseract", "OCR", "Google Vertex Ai", "Google Cloud Vision"],
     },
     {
         companyName: "PT Atmatech Global Informatika",
@@ -49,10 +49,10 @@ export const MyWorks = [
                 descriptions: [
                     "Build a crawling application to get data content from social media (twitter, instagram, tiktok and " +
                     "youtube) and media news online to make analysis of issues or trends in social media and online news."
-                ],
-                skills: ["Python", "Celery", "Flask", "RabbitMQ", "MongoDB"],
+                ]
             }
-        ]
+        ],
+        skills: ["Python", "Celery", "Flask", "RabbitMQ", "MongoDB"],
     },
     {
         companyName: "PT Ebdesk Teknologi",
@@ -64,9 +64,9 @@ export const MyWorks = [
                     "Build tool to daily operational media monitoring application with python and make sure the " +
                     "application running well.",
                     "Installing and maintaining existing product application in client side."
-                ],
-                skills: ["Python", "Solr", "NSQ", "Beanstalkd", "MySQL"],
+                ]
             }
-        ]
+        ],
+        skills: ["Python", "Solr", "NSQ", "Beanstalkd", "MySQL"],
     }
 ];
