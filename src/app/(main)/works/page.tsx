@@ -37,11 +37,10 @@ const Works: React.FC = () => {
                                     {
                                         item.histories.map((history, historiesIndex) => (
                                             <div id="histories" className="" key={"history-" + historiesIndex}>
-                                                <div className="flex justify-between mt-1 mb-2">
-                                                    {/*<div className="text-xs">{item.period}</div>*/}
+                                                <div className="flex justify-between mt-1 mb-2 text-slate-700">
                                                     <div
-                                                        className="mt-3 text-base text-slate-700 capitalize">{history.role}</div>
-                                                    <div className="text-base">{history.period}</div>
+                                                        className="mt-3 text-base capitalize">{history.role}</div>
+                                                    <div className="text-base italic">{history.period}</div>
                                                 </div>
                                                 <ul className="mt-2 list-disc pl-10 text-base font-normal mb-5">
                                                     {
