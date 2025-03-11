@@ -1,14 +1,21 @@
+export interface Project {
+    projectName: string;
+    desc: string;
+    imgUrl: string;
+    tags: string[];
+}
 
-
-const ProjectsCard: React.FC = () => {
+const ProjectsCard = ({ item }: {item: Project}) => {
 
     return (
         <div
             className="p-4 md:w-1/3 md:mb-0 mb-6 flex flex-col justify-center items-center max-w-sm">
             <div
-                className="bg-gray-300 h-56 w-full rounded-lg shadow-md bg-cover bg-center bg-[url(/project/banner_img_crop.png)]"></div>
+                className={"bg-gray-300 h-56 w-full rounded-lg shadow-md bg-cover bg-center"}
+                style={{ backgroundImage: `url(${item.imgUrl})` }}
+            ></div>
 
-            <div className="w-70 bg-white -mt-10 shadow-lg rounded-lg overflow-hidden p-5">
+            <div className="w-70 bg-white -mt-10 shadow-lg rounded-lg overflow-hidden p-5 h-64">
                 <div className="header-content flex flex-row gap-1">
                     <div className="inline-flex">
                         <div
@@ -32,13 +39,9 @@ const ProjectsCard: React.FC = () => {
                         <div className="category-title flex-1 text-sm"> RabbitMQ</div>
                     </div>
                 </div>
-                <div className="mt-1 title-post font-sans font-medium text-base">Komcards</div>
-                <div className="summary-post text-base text-justify my-1.5">Komcards merupakan
-                    platform dari Komerce yang dapat mempermudah proses pembayaran untuk
-                    segala kebutuhan bisnismu secara online.
-                    <button
-                        className="bg-blue-100 text-blue-500 mt-4 block rounded p-2 text-sm ">
-                        <span className="">Read More</span></button>
+                <div className="mt-1 title-post font-sans font-medium text-base">{item.projectName}</div>
+                <div className="summary-post text-base text-justify my-1.5">
+                    {item.desc}
                 </div>
 
             </div>
