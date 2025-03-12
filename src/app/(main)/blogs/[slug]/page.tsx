@@ -58,7 +58,7 @@ const DetailBlog: React.FC = () => {
         <div>
             {
                 loading && (
-                    <div className="overlay flex justify-center">
+                    <div className="overlay-global flex justify-center">
                         <BeatLoader
                             size={10}
                             loading={loading}
