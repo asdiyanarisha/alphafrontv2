@@ -1,8 +1,11 @@
+'use client'
+
 import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import { Progress } from "@/components/ui/progress"
 import {MySkills, MyExperiences} from "@/data/headline";
 import Image from "next/image";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 
 
 const Headline = () => {
@@ -22,28 +25,29 @@ const MyWork = () => {
                     <CardTitle className="font-sans scroll-m-20 text-xl font-bold tracking-tight">
                         Work</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="h-[250]">
                     <ol className="mt-6 space-y-4">
-                        {
-                            MyExperiences.map((item, index) => (
-                                <li className="flex gap-4"  key={"experience-" + index}>
-                                    <div
-                                        className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-                                        <Image src={item.company_logo} width="30" height="30" alt=""></Image>
-                                    </div>
-                                    <div className="flex flex-auto flex-wrap gap-x-2">
+                            {
+                                MyExperiences.map((item, index) => (
+                                    <li className="flex gap-4" key={"experience-" + index}>
                                         <div
-                                            className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">{item.company_name}
+                                            className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+                                            <Image src={item.company_logo} width="30" height="30" alt=""></Image>
                                         </div>
-                                        <div className="text-xs text-zinc-500 dark:text-zinc-400">{item.role}
+                                        <div className="flex flex-auto flex-wrap gap-x-2">
+                                            <div
+                                                className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">{item.company_name}
+                                            </div>
+                                            <div className="text-xs text-zinc-500 dark:text-zinc-400">{item.role}
+                                            </div>
+                                            <div
+                                                className="ml-auto text-xs text-zinc-400 dark:text-zinc-500">{item.period}
+                                            </div>
                                         </div>
-                                        <div className="ml-auto text-xs text-zinc-400 dark:text-zinc-500">{item.period}
-                                        </div>
-                                    </div>
-                                </li>
-                            ))
-                        }
-                    </ol>
+                                    </li>
+                                ))
+                            }
+                        </ol>
                 </CardContent>
                 <CardFooter>
                     <a href="https://www.linkedin.com/in/asdiyanarisha/"
@@ -65,32 +69,34 @@ const Expriences = () => {
                         Skills</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <ol className="mt-6 space-y-4">
-                        {
-                            MySkills.map((item, index) => (
-                                <li className="flex gap-4" key={"item-" + index}>
-                                    <div
-                                        className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-                                        <Image src={item.img_path} width="30" height="30" alt=""></Image>
-                                    </div>
-                                    <div className="flex flex-auto flex-wrap gap-x-2">
+                    <ScrollArea className="h-[250]">
+                        <ol className="mt-6 space-y-4 pr-4">
+                            {
+                                MySkills.map((item, index) => (
+                                    <li className="flex gap-4" key={"item-" + index}>
                                         <div
-                                            className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">{item.name}
+                                            className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+                                            <Image src={item.img_path} width="30" height="30" alt=""></Image>
                                         </div>
-                                        <div className="w-full flex flex-row">
+                                        <div className="flex flex-auto flex-wrap gap-x-2">
                                             <div
-                                                className="basis-11/12 pt-1 text-xs text-zinc-500 dark:text-zinc-400 overflow-visible">
-                                                <Progress value={item.point}/>
+                                                className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">{item.name}
                                             </div>
-                                            <div
-                                                className="basis-1/12 text-right text-xs text-black dark:text-zinc-500">{item.point}%
+                                            <div className="w-full flex flex-row">
+                                                <div
+                                                    className="basis-11/12 pt-1 text-xs text-zinc-500 dark:text-zinc-400 overflow-visible">
+                                                    <Progress value={item.point}/>
+                                                </div>
+                                                <div
+                                                    className="basis-1/12 text-right text-xs text-black dark:text-zinc-500">{item.point}%
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </li>
-                            ))
-                        }
-                    </ol>
+                                    </li>
+                                ))
+                            }
+                        </ol>
+                    </ScrollArea>
                 </CardContent>
                 <CardFooter>
                     <a href="https://www.linkedin.com/in/asdiyanarisha/"
