@@ -24,7 +24,7 @@ const Summary = () => {
     return (
         <div ref={domRef} className={`mt-52 pt-36 shadow-2xl fade-in-section ${isVisible ? 'is-visible' : ''}`}>
             <div className="flex items-center justify-center font-sans bg-black text-white">
-                <div className="w-1/2 my-20 mt-10">
+                <div className="xl:w-1/2 my-20 mt-10 w-full">
                     <div className="flex flex-row justify-center">
                         <Avatar className="w-[10rem] h-[10rem]">
                             <AvatarImage src="https://avatars.githubusercontent.com/u/19662749?v=4"/>
@@ -36,7 +36,7 @@ const Summary = () => {
                             <h2 className="text-2xl font-semibold text-slate-300">About Me</h2>
                         </div>
                         <div
-                            className="ml-28 text-lg w-3/4 md:text-justify flex justify-center flex-col text-slate-300">
+                            className="xl:ml-28 mx-10 text-lg xl:w-3/4 w-10/12 md:text-justify flex justify-center flex-col text-slate-300">
                             <p className="text-wrap">
                                 Hello my name Risha Asdiyana Rifi, and you can call me Risha :).
                                 I am a software engineer with 8+ years eperiences in full-stack development.

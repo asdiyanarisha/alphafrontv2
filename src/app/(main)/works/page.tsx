@@ -42,24 +42,26 @@ const Works: React.FC = () => {
                                                         className="mt-3 text-base capitalize">{history.role}</div>
                                                     <div className="text-base italic">{history.period}</div>
                                                 </div>
-                                                <ul className="mt-2 list-disc pl-10 text-base font-normal mb-5">
-                                                    {
-                                                        history.descriptions.map((desc, indexDesc) => (
-                                                            <li className="my-2.5" key={"desc-" + indexDesc}>
-                                                                {desc}
-                                                            </li>
-                                                        ))
-                                                    }
-                                                </ul>
+                                                <div className="lg:w-3/4">
+                                                    <ul className="mt-2 list-disc pl-10 text-base font-normal mb-5">
+                                                        {
+                                                            history.descriptions.map((desc, indexDesc) => (
+                                                                <li key={"desc-" + indexDesc}>
+                                                                    {desc}
+                                                                </li>
+                                                            ))
+                                                        }
+                                                    </ul>
+                                                </div>
                                             </div>
                                         ))
                                     }
                                     <div className="mt-3 text-sm flex flex-row mb-3">
-                                        <span className="text-base font-medium mr-2 mt-1">Skills : </span>
+                                        {/*<span className="text-base font-medium mr-2 mt-1">Skills : </span>*/}
                                         <ul className="flex flex-row gap-1.5 text-white">
                                             {
                                                 item.skills.map((skill, indexSkill) => (
-                                                    <li className="bg-black rounded p-1 px-2"
+                                                    <li className="bg-black rounded-lg p-1 px-2"
                                                         key={"skill-" + indexSkill}>
                                                         <span>{skill}</span>
                                                     </li>
