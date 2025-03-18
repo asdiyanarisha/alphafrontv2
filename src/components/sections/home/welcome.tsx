@@ -13,7 +13,7 @@ const Welcome = () => {
                     <p className="text-lg mt-1">Code. Optimize. Scale. Deliver.</p>
                     <div className="flex flex-row mt-5 gap-2 justify-center">
                         <Link href={`/works`} className="text-sm px-4 py-1.5 hover:bg-black border-black rounded-none bg-white border-2 text-black hover:text-white align-middle">
-                            <span className="mt-10">View My Work</span></Link>
+                            <span className="mt-10">About Me</span></Link>
                         <Link href={`/blogs`} className="text-sm px-4 py-1.5 hover:bg-white border-black rounded-none bg-black border-2 text-white hover:text-black align-middle">My
                             Latest Blog</Link>
                     </div>

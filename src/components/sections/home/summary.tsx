@@ -5,6 +5,7 @@ import {GitHubLogoIcon, LinkedInLogoIcon, EnvelopeClosedIcon} from "@radix-ui/re
 import {useEffect, useRef, useState} from 'react';
 import "./styles.css";
 import Link from "next/link";
+import {MyWorksNew} from "@/data/works";
 
 const Summary = () => {
     const [isVisible, setVisible] = useState(false);
@@ -65,29 +66,41 @@ const Summary = () => {
                         <div className="w-full flex justify-center my-10">
                             <h2 className="text-2xl font-semibold text-slate-300">My Experience</h2>
                         </div>
-                        <div
-                            className="content-summary">
-                            <Link href="https://komerce.id" target="_blank">
-                                <div className="flex flex-col lg:flex-row mb-5" id="experience">
-                                    <div className="lg:w-1/4 text-base">
-                                        <span>2023 — Present</span>
-                                    </div>
-                                    <div className="lg:w-3/4 flex flex-col">
-                                        <h2 className="text-base font-semibold">
-                                            <div className="hover:text-black hover:bg-white">
-                                                Senior Backend Engineer - Komerce
+
+                        {
+                            MyWorksNew.map((item, index) => (
+                                <div key={index}
+                                    className="content-summary hover:bg-gradient-to-br hover:from-neutral-900 hover:to-gray-600 hover:drop-shadow-2xl hover:rounded-xl hover:border-b-gray-900 mt-5">
+                                    <Link href={item.url} target="_blank" className="m-5 mt-3">
+                                        <div className="flex flex-col lg:flex-row mb-5 mt-3" id="experience">
+                                            <div className="lg:w-1/4 text-base">
+                                                <span>{item.period}</span>
                                             </div>
-                                        </h2>
-                                        <p className="text-wrap mt-1 text-base">
-                                            Outside of work, I enjoy staying up to date with emerging technologies and
-                                            have
-                                            built
-                                            side projects exploring frontend technologies such as react and tailwind.
-                                        </p>
-                                    </div>
+                                            <div className="lg:w-3/4 flex flex-col">
+                                                <h2 className="text-base font-semibold">
+                                                    {item.title}
+                                                </h2>
+                                                <p className="text-wrap mt-1 text-base">
+                                                    {item.description}
+                                                </p>
+                                                <div
+                                                    className="mt-5 w-full flex flex-row flex-wrap gap-1.5 text-amber-50 font-sans">
+                                                    {
+                                                        item.skills.map((skill, skillIdx) => (
+                                                            <div key={skillIdx}
+                                                                className="bg-gray-600 rounded-xl p-1 px-2 text-sm">
+                                                                {skill}
+                                                            </div>
+                                                        ))
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </Link>
                                 </div>
-                            </Link>
-                        </div>
+                            ))
+                        }
+
                     </div>
                     <div className="py-14">
                         <div className="w-full flex justify-center my-10">

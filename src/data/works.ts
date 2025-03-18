@@ -70,3 +70,37 @@ export const MyWorks = [
         skills: ["Python", "Solr", "NSQ", "Beanstalkd", "MySQL"],
     }
 ];
+
+export const MyWorksNew = [
+    {
+        title: "Senior Backend Engineer - Komerce",
+        url: "https://komerce.id/en",
+        period: "2023 — Present",
+        description: "Outside of work, I enjoy staying up to date with emerging technologies and have built side projects exploring frontend technologies such as react and tailwind.",
+        skills: ["Go", "NodeJs", "MySQL", "RabbitMQ", "Laravel", "MongoDB", "Elastic Search", "Redis", "PostgreSQL"],
+    },
+    {
+        title: "Freelance Backend Engineer - Perveks",
+        url: "https://perveks.com/",
+        period: "2023",
+        description: "Outside of work, I enjoy staying up to date with emerging technologies and have built side projects exploring frontend technologies such as react and tailwind.",
+        skills: ["Go", "PostgreSQL", "GCP", "Tesseract", "OCR", "Google Vertex Ai", "Google Cloud Vision"],
+    },
+    {
+        title: "Crawler Engineer - Atmatech Global Informatika",
+        url: "https://atmatech.net/",
+        period: "2018 — 2023",
+        description: "Build a crawling application to get data content from social media (twitter, instagram, tiktok and youtube) and media news online to make analysis of issues or trends in social media and online news.",
+        skills: ["Python", "Java", "Scala", "MongoDB", "RabbitMQ", "Flask", "Selenium", "Elastic Search", "Beatifulsoup", "Celery"],
+    },
+    {
+        title: "Software Engineer - Ebdesk Teknologi (Indonesia Indicator)",
+        url: "https://indonesiaindicator.com/who-we-are",
+        period: "2016 — 2018",
+        description: "Build tool to daily operational media monitoring application with python and make sure the application running well. Installing and maintaining existing product application in client side.",
+        skills: ["Python", "Solr", "NSQ", "Beanstalkd", "MySQL"],
+    }
+];
+
+
+
