@@ -26,12 +26,14 @@ const Welcome = () => {
         <div className="md:mt-24 lg:mt-60 mt-36 text-center h-80 mb-40 lg:mb-40 welcomeClass">
             <div className="flex justify-center items-center py-20">
                 <div className="flex flex-col font-sans">
-                    <h1 className="text-5xl"><span className="font-bold font-serif">Hello,</span> My name is <span className="font-semibold">Risha</span>.
+                    <h1 className="md:text-5xl md:w-full w-11/12 text-center text-3xl md:ml-0 ml-8">
+                        <span className="font-bold font-serif">
+                        Hello,</span> My name is <span className="font-semibold">Risha</span>.
                     </h1>
-                    <h1 className="text-5xl flex lg:flex-row flex-col mt-1 lg:ml-7 ml-1">
+                    <h1 className="md:text-5xl text-3xl flex lg:flex-row flex-col mt-1 md:ml-7 ml-1">
                         <span className="font-serif">I'm a </span>
                         <span
-                            className="relative font-serif flex overflow-hidden text-center lg:pl-3 pl-8 pb-[60] pr-[435] whitespace-nowrap">
+                            className="relative font-serif flex overflow-hidden text-center md:pl-3 pl-48 pb-[60] pr-[435] whitespace-nowrap">
                         {titles.map((title, index) => (
                             <motion.span
                                 key={index}
