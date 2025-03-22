@@ -23,7 +23,7 @@ const Summary = () => {
     }, []);
 
     return (
-        <div ref={domRef} className={`mt-52 pt-36 shadow-2xl fade-in-section ${isVisible ? 'is-visible' : ''}`}>
+        <div ref={domRef} className={`mt-52 pt-36 shadow-2xl mb-10 fade-in-section ${isVisible ? 'is-visible' : ''}`} id="about-me">
             <div className="flex items-center justify-center font-sans bg-black text-white">
                 <div className="xl:w-1/2 my-20 mt-20 w-full">
                     <div className="flex flex-row justify-center">
@@ -80,7 +80,7 @@ const Summary = () => {
                                                 <h2 className="text-base font-semibold">
                                                     {item.title}
                                                 </h2>
-                                                <p className="text-wrap mt-1 text-base">
+                                                <p className="text-wrap mt-1.5 text-base leading-6">
                                                     {item.description}
                                                 </p>
                                                 <div
@@ -102,15 +102,21 @@ const Summary = () => {
                         }
 
                     </div>
-                    <div className="py-14">
+                    <div className="">
                         <div className="w-full flex justify-center my-10">
-                            <h2 className="text-2xl font-semibold text-slate-300">Let's be Connect!</h2>
+                            <h2 className="text-2xl font-semibold text-slate-300">Let's Connect Me!</h2>
                         </div>
-                        <div className="flex pb-3 justify-center" id="icon">
-                            <div className="flex flex-row gap-4 w-1/2 justify-center">
-                                <LinkedInLogoIcon className="h-8 w-8"/>
-                                <GitHubLogoIcon className="h-8 w-8"/>
-                                <EnvelopeClosedIcon className="h-8 w-8"/>
+                        <div className="flex pb-3 justify-center" id="let-connect">
+                            <div className="flex flex-row gap-5 w-1/2 justify-center">
+                                <Link href="https://www.linkedin.com/in/asdiyanarisha/" target="_blank" className="bg-white hover:border-white hover:bg-black rounded-full">
+                                    <LinkedInLogoIcon className="h-12 w-12 p-2 text-black hover:text-white"/>
+                                </Link>
+                                <Link href="#let-connect" onClick={() => window.location = 'mailto:asdiyanarisha@gmail.com'} className="bg-white hover:border-white hover:bg-black rounded-full">
+                                    <EnvelopeClosedIcon className="h-12 w-12 p-2 text-black hover:text-white"/>
+                                </Link>
+                                <Link href="https://github.com/asdiyanarisha" target="_blank" className="bg-white hover:border-white hover:bg-black rounded-full">
+                                    <GitHubLogoIcon className="h-12 w-12 p-2 text-black hover:text-white"/>
+                                </Link>
                             </div>
                         </div>
                     </div>
