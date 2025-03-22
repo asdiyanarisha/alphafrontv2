@@ -27,7 +27,7 @@ const Summary = () => {
             <div className="flex items-center justify-center font-sans bg-black text-white">
                 <div className="xl:w-1/2 my-20 mt-20 w-full">
                     <div className="flex flex-row justify-center">
-                        <Avatar className="w-[10rem] h-[10rem]">
+                        <Avatar className="w-[10rem] h-[10rem] border border-slate-200 border-4">
                             <AvatarImage src="https://avatars.githubusercontent.com/u/19662749?v=4"/>
                             <AvatarFallback>RAR</AvatarFallback>
                         </Avatar>
@@ -39,7 +39,7 @@ const Summary = () => {
                         <div
                             className="content-summary">
                             <p className="text-wrap">
-                                Hello my name Risha Asdiyana Rifi, and you can call me Risha :).
+                                Hello I'am Risha Asdiyana Rifi, and you can call me Risha :).
                                 I am a software engineer with 8+ years eperiences in full-stack development.
                                 with experties in Go, Python, NodeJs, Java, React, Docker, MongoDB and Sql Databases.
                                 Experienced in troubleshooting and optimizing application performance to ensure seamless
@@ -57,8 +57,17 @@ const Summary = () => {
                                 and optimizing performance load process api.
                             </p>
                             <p className="text-wrap mt-8">
-                                Outside of work, I enjoy staying up to date with emerging technologies and have built
-                                side projects exploring frontend technologies such as react and tailwind.
+                                Before that, I have worked on media monitoring application platforms,
+                                i started as a code in&nbsp;
+                                <Link href="https://ebdesk.com/" target="_blank" className="font-bold hover:bg-white hover:text-black text-white">Ebdesk</Link>
+                                &nbsp;where i building tool and installing a product on government clients.
+                                Then i moved to&nbsp;
+                                <Link href="https://atmatech.net/" target="_blank" className="font-bold hover:bg-white hover:text-black text-white">Atmatech</Link>
+                                &nbsp;as Crawler Engineer, contributing to designing scalable of web crawler applications.
+                            </p>
+                            <p className="text-wrap mt-8">
+                                Outside of work, I enjoy staying up to date with emerging technologies and have
+                                built side projects exploring frontend technologies such as react and tailwind.
                             </p>
                         </div>
                     </div>
@@ -111,7 +120,7 @@ const Summary = () => {
                                 <Link href="https://www.linkedin.com/in/asdiyanarisha/" target="_blank" className="bg-white hover:border-white hover:bg-black rounded-full">
                                     <LinkedInLogoIcon className="h-12 w-12 p-2 text-black hover:text-white"/>
                                 </Link>
-                                <Link href="#let-connect" onClick={() => window.location = 'mailto:asdiyanarisha@gmail.com'} className="bg-white hover:border-white hover:bg-black rounded-full">
+                                <Link href="mailto:asdiyanarisha@gmail.com" className="bg-white hover:border-white hover:bg-black rounded-full">
                                     <EnvelopeClosedIcon className="h-12 w-12 p-2 text-black hover:text-white"/>
                                 </Link>
                                 <Link href="https://github.com/asdiyanarisha" target="_blank" className="bg-white hover:border-white hover:bg-black rounded-full">

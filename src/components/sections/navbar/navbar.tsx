@@ -18,16 +18,11 @@ const datas: {title: string, id: number, route: string}[] = [
     },
     {
         id: 1,
-        title: "Work",
-        route: "/works"
-    },
-    {
-        id: 2,
         title: "Blogs",
         route: "/blogs"
     },
     {
-        id: 3,
+        id: 2,
         title: "Projects",
         route: "/projects"
     }

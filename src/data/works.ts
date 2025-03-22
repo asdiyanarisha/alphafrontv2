@@ -105,7 +105,7 @@ export const MyWorksNew = [
         title: "Software Engineer - Ebdesk Teknologi (Indonesia Indicator)",
         url: "https://indonesiaindicator.com/who-we-are",
         period: "2016 — 2018",
-        description: "Build tool to daily operational media monitoring application with python and make sure the application running well. Installing and maintaining existing product application in client side.",
+        description: "Build tool to daily operational media monitoring application with python and make sure the application running well. Installing and maintaining existing product application in client side such as Polri, BIN and BNPT.",
         skills: ["Python", "Solr", "NSQ", "Beanstalkd", "MySQL"],
     }
 ];
