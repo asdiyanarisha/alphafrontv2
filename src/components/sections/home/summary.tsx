@@ -21,6 +21,8 @@ const Summary = () => {
         }
 
     }, []);
+    const mySkills = ["Php", "Go", "Python", "Java", "Scala", "NodeJS", "RabbitMQ", "NSQ", "TypeScript", "Codeigniter", "MySQL", "PostgreSQL", "MongoDB", "Elastic Search",
+    "React", "NextJs", "Laravel", "Flask", "FastApi", "Django", "Celery", "Redis", "Amazon S3", "Tesseract"];
 
     return (
         <div ref={domRef} className={`mt-52 pt-36 shadow-2xl mb-10 fade-in-section ${isVisible ? 'is-visible' : ''}`} id="about-me">
@@ -111,13 +113,33 @@ const Summary = () => {
                         }
 
                     </div>
+
+                    <div className="pb-12">
+                        <div className="w-full flex justify-center my-10">
+                            <h2 className="text-2xl font-semibold text-slate-300">My Skills</h2>
+                        </div>
+                        <div>
+                            <div
+                                className="mt-5 w-full flex flex-row flex-wrap justify-center gap-3 text-amber-50 font-sans">
+                                {
+                                    mySkills.map((skill, skillIdx) => (
+                                        <div key={skillIdx}
+                                             className="bg-gray-600 rounded-xl p-1 px-5 text-base">
+                                            {skill}
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        </div>
+                    </div>
                     <div className="">
                         <div className="w-full flex justify-center my-10">
                             <h2 className="text-2xl font-semibold text-slate-300">Let's Connect Me!</h2>
                         </div>
                         <div className="flex pb-3 justify-center" id="let-connect">
                             <div className="flex flex-row gap-5 w-1/2 justify-center">
-                                <Link href="https://www.linkedin.com/in/asdiyanarisha/" target="_blank" className="bg-white hover:border-white hover:bg-black rounded-full">
+                                <Link href="https://www.linkedin.com/in/asdiyanarisha/" target="_blank"
+                                      className="bg-white hover:border-white hover:bg-black rounded-full">
                                     <LinkedInLogoIcon className="h-12 w-12 p-2 text-black hover:text-white"/>
                                 </Link>
                                 <Link href="mailto:asdiyanarisha@gmail.com" className="bg-white hover:border-white hover:bg-black rounded-full">
