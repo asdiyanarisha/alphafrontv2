@@ -4,19 +4,9 @@ import React, {useEffect, useState} from "react";
 import {GetPublicBlogs} from "@/api/blog";
 import CardBlog from "@/app/(main)/blogs/card";
 import BeatLoader from "react-spinners/BeatLoader";
+import {Blog} from "@/api/models/blog";
+import {ResponseBlogs} from "@/api/dto/blog";
 
-export interface Blog {
-    title: string;
-    slug: string;
-    url_image: string;
-    description: string;
-    tags: string[];
-    created_at: string;
-}
-
-interface ResponseBlogs {
-    results: Blog[]
-}
 
 const Blogs: React.FC = () => {
     const [blogsData, setBlogsData] = useState<ResponseBlogs>(

@@ -1,9 +1,43 @@
-import React from "react";
+'use client'
+
+import React, {useEffect, useState} from "react";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import Link from "next/link";
 import {CirclePlus, Ellipsis} from "lucide-react";
+import {ResponseBlogs} from "@/api/dto/blog";
+import {GetPublicBlogs} from "@/api/blog";
+import {Blog} from "@/api/models/blog";
+import Moment from "moment/moment";
+import {Button} from "@/components/ui/button";
 
-const Blogs: React.FC = async () => {
+const Blogs: React.FC =  () => {
+    const [blogsData, setBlogsData] = useState<ResponseBlogs>(
+        {results: []}
+    );
+
+    useEffect(() => {
+        const fetchDatasPublic = async () => {
+            GetPublicBlogs().then(r => {
+
+                setTimeout(() => {
+                    r.data.forEach((d: Blog) => {
+                        d.url_image = process.env.NEXT_PUBLIC_API_HOST + d.url_image
+
+                        setBlogsData(prevState => ({
+                            results: [...prevState.results, d],
+                        }));
+                        // setLoading(false);
+                    })
+                }, 350)
+            })
+        };
+
+        fetchDatasPublic().then();
+
+        return () => {};
+    }, [])
+
+
     return (
         <div className="w-full relative h-full flex flex-auto flex-col px-4 sm:px-6 py-4 sm:py-6 md:px-8">
             <Card className="font-sans">
@@ -50,27 +84,39 @@ const Blogs: React.FC = async () => {
                                 </tr>
                                 </thead>
                                 <tbody className="text-sm divide-y divide-gray-100">
-                                <tr>
-                                    <td className="pr-5 pl-2">
-                                        <div className="font-semibold text-left">
-                                            <input type="checkbox" className="checkbox peer text-primary"/>
-                                        </div>
-                                    </td>
-                                    <td className="col-title">
-                                        <div className="text-left font-bold">Fundamental of beatifulsoup for python</div>
-                                    </td>
-                                    <td className="col-table">
-                                    <div className="text-left">Python,Scrapper,Crawler</div>
-                                    </td>
-                                    <td className="col-table">
-                                        <div className="text-left font-medium text-green-500">20 Aug 2024</div>
-                                    </td>
-                                    <td className="col-table">
-                                        <div className="text-lg flex justify-center">
-                                            <Ellipsis/>
-                                        </div>
-                                    </td>
-                                </tr>
+                                {
+                                    blogsData.results.map((d, index) => (
+                                        <tr key={index}>
+                                            <td className="pr-5 pl-2">
+                                                <div className="font-semibold text-left">
+                                                    <input type="checkbox" className="checkbox peer text-primary"/>
+                                                </div>
+                                            </td>
+                                            <td className="col-title">
+                                                <div className="text-left font-bold">
+                                                    {d.title}
+                                                </div>
+                                            </td>
+                                            <td className="col-table">
+                                                <div className="text-left">
+                                                    {d.tags.join(",")}
+                                                </div>
+                                            </td>
+                                            <td className="col-table">
+                                                <div className="text-left font-medium text-green-500">
+                                                    {Moment(d.created_at).format("MMM DD, YYYY")}
+                                                </div>
+                                            </td>
+                                            <td className="col-table">
+                                                <div className="text-lg flex justify-center">
+                                                    <Button className="bg-transparent">
+                                                        <Ellipsis className="text-black"/>
+                                                    </Button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ))
+                                }
                                 </tbody>
                             </table>
                         </div>

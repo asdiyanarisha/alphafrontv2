@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {Blog} from "@/app/(main)/blogs/page";
+import {Blog} from "@/api/models/blog";
 import Moment from 'moment';
 
 
