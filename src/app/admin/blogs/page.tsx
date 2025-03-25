@@ -3,11 +3,19 @@
 import React, {useEffect, useState} from "react";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import Link from "next/link";
-import {CirclePlus, Ellipsis} from "lucide-react";
+import {CirclePlus, Ellipsis, Pen, Trash2, User} from "lucide-react";
 import {ResponseBlogs} from "@/api/dto/blog";
 import {GetPublicBlogs} from "@/api/blog";
 import {Blog} from "@/api/models/blog";
 import Moment from "moment/moment";
+import {
+    DropdownMenu,
+    DropdownMenuCheckboxItem,
+    DropdownMenuContent, DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import {Button} from "@/components/ui/button";
 
 const Blogs: React.FC =  () => {
@@ -109,9 +117,24 @@ const Blogs: React.FC =  () => {
                                             </td>
                                             <td className="col-table">
                                                 <div className="text-lg flex justify-center">
-                                                    <Button className="bg-transparent">
-                                                        <Ellipsis className="text-black"/>
-                                                    </Button>
+                                                    <DropdownMenu>
+                                                        <DropdownMenuTrigger asChild>
+                                                            <Button variant={"outline"} className="px-2 py-1">
+                                                                <Ellipsis className="text-black"/>
+                                                            </Button>
+                                                        </DropdownMenuTrigger>
+                                                        <DropdownMenuContent className="w-16">
+                                                            <DropdownMenuItem>
+                                                                <Pen />
+                                                                <span className={"text-base"}>Edit</span>
+                                                            </DropdownMenuItem>
+                                                            <DropdownMenuItem>
+                                                                <Trash2 />
+                                                                <span className={"text-base"}>Delete</span>
+                                                            </DropdownMenuItem>
+
+                                                        </DropdownMenuContent>
+                                                    </DropdownMenu>
                                                 </div>
                                             </td>
                                         </tr>
