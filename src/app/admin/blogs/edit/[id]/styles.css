@@ -1,0 +1,24 @@
+.content h2 {
+    @apply text-2xl font-bold;
+}
+
+.content p {
+    @apply text-lg font-sans font-normal leading-8;
+}
+
+.content {
+    @apply w-4/5 mb-10;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white; /* Semi-transparent black */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top of everything */
+}

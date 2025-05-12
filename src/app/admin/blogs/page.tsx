@@ -10,10 +10,7 @@ import {Blog} from "@/api/models/blog";
 import Moment from "moment/moment";
 import {
     DropdownMenu,
-    DropdownMenuCheckboxItem,
     DropdownMenuContent, DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {Button} from "@/components/ui/button";
@@ -126,7 +123,7 @@ const Blogs: React.FC =  () => {
                                                         <DropdownMenuContent className="w-16">
                                                             <DropdownMenuItem>
                                                                 <Pen />
-                                                                <span className={"text-base"}>Edit</span>
+                                                                <Link className={"text-base"} href={`blogs/edit/${d.id}`}>Edit</Link>
                                                             </DropdownMenuItem>
                                                             <DropdownMenuItem>
                                                                 <Trash2 />
