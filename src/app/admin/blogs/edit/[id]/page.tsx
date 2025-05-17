@@ -13,6 +13,7 @@ import {useToast} from "@/hooks/use-toast";
 import {cn} from "@/lib/utils";
 import {redirect, useParams} from "next/navigation";
 import {ToasterCustom} from "@/components/ui/toaster";
+import hljs from 'highlight.js';
 
 export interface BodyFormData {
     title: string;
@@ -28,6 +29,15 @@ const EditBlogs: React.FC = () => {
     const params = useParams();
     const id = params.id;
 
+    // Define formats that should be recognized
+    const formats = [
+        'header',
+        'bold', 'italic', 'underline',
+        'list',
+        'link', 'image',
+        'code-block'
+    ];
+
     let selectLocalImage;
     const modules = useMemo(() => ({
         toolbar: {
@@ -40,7 +50,11 @@ const EditBlogs: React.FC = () => {
             handlers: {
                 image: selectLocalImage,
             }
-        }
+        },
+        clipboard: {
+            matchVisual: false
+        },
+        syntax: { hljs },
     }), [selectLocalImage])
 
     const [formData, setFormData] = useState<BodyFormData>({
@@ -132,7 +146,13 @@ const EditBlogs: React.FC = () => {
                                             </div>
                                             <div className="flex flex-col">
                                                 <label className="leading-loose">Content</label>
-                                                <ReactQuill theme="snow" value={formData.content} onChange={handleContent} modules={modules}/>
+                                                <ReactQuill 
+                                                    theme="snow" 
+                                                    value={formData.content} 
+                                                    onChange={handleContent} 
+                                                    modules={modules}
+                                                    formats={formats}
+                                                />
                                             </div>
                                             <div className="flex flex-col">
                                                 <label className="leading-loose">Header Image</label>
