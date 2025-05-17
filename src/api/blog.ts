@@ -35,6 +35,43 @@ export async function StorePostBlog (formDataRaw: BodyFormData) {
     });
 }
 
+
+export async function EditPostBlog(id: string | undefined, formDataRaw: BodyFormData) {
+    const cookieStore = await cookies()
+    const session = cookieStore.get('session');
+
+
+    const bodyFormData = new FormData();
+    bodyFormData.append("title", formDataRaw.title);
+    bodyFormData.append("content", formDataRaw.content);
+    bodyFormData.append("tags", formDataRaw.tags.join(','));
+
+    // if (formDataRaw.file) {
+    //     bodyFormData.append("file", formDataRaw.file);
+    // }
+
+    console.log(bodyFormData);
+
+    return await axiosInstance.put("/blog/post/"+id,
+        bodyFormData, {
+        headers: {
+            'Authorization': 'bearer ' + session?.value
+        }
+    }).then(async function (response) {
+        console.log(response);
+        return {code: response.status, status: "success"};
+    }).catch(function (err) {
+        console.log(err.response.data);
+        console.log(err.response.status);
+        if (err.response.status == 401) {
+            return {code: err.response.status, status: "unauthenticated"};
+        }
+
+        return {code: err.response.status, status: "failed"};
+    });
+}
+
+
 export async function GetPublicBlog(slug: string | Array<string> | undefined) {
     return await axiosInstance.get("/blog/public/"+slug, {}).
     then(async function (response) {

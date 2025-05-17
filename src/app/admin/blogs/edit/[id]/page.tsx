@@ -8,7 +8,7 @@ import 'react-quill/dist/quill.snow.css';
 import './styles.css'
 import dynamic from "next/dynamic";
 import {Button} from "@/components/ui/button";
-import {GetBlogById, StorePostBlog} from "@/api/blog";
+import {GetBlogById, StorePostBlog, EditPostBlog} from "@/api/blog";
 import {useToast} from "@/hooks/use-toast";
 import {cn} from "@/lib/utils";
 import {redirect, useParams} from "next/navigation";
@@ -50,19 +50,6 @@ const EditBlogs: React.FC = () => {
     useEffect(() => {
         const fetchDataById = async () => {
             GetBlogById(id).then(r => {
-                console.log(r.data.title);
-                // setTimeout(() => {
-                //     setBlogData({
-                //         title: r.data.title,
-                //         content: r.data.content,
-                //         imageUrl: process.env.NEXT_PUBLIC_API_HOST + r.data.url_image,
-                //         tags: r.data.tags,
-                //         createdAt: Moment(r.createdAt).format("DD MMM YYYY HH:mm"),
-                //     });
-                //
-                //     // setLoading(false);
-                // }, 350);
-
                 setFormData({
                     file: r.data.file, tags: r.data.tags,
                     title: r.data.title,
@@ -76,10 +63,10 @@ const EditBlogs: React.FC = () => {
     }, [id]);
 
     const onSubmit = () => {
-        StorePostBlog(formData).then(
+        EditPostBlog(id?.toString(), formData).then(
             async function () {
                 toast({
-                    title: "success",
+                    title: "success", 
                     description: "Edit a post is success!",
                     variant: "default",
                     duration: 3000,
