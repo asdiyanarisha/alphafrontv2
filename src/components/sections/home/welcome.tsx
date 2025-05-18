@@ -3,7 +3,6 @@
 import "./styles.css";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { motion } from "framer-motion";
 
 const Welcome = () => {
     const [titleNumber, setTitleNumber] = useState(0);
@@ -30,32 +29,8 @@ const Welcome = () => {
                         <span className="font-bold font-serif">
                         Hello,</span> My name is <span className="font-semibold">Risha</span>.
                     </h1>
-                    <h1 className="md:text-5xl text-3xl flex lg:flex-row flex-col mt-1 md:ml-7 ml-1">
-                        <span className="font-serif">I'm a </span>
-                        <span
-                            className="relative font-serif flex overflow-hidden text-center md:pl-3 pl-48 pb-[60] pr-[435] whitespace-nowrap">
-                        {titles.map((title, index) => (
-                            <motion.span
-                                key={index}
-                                className="absolute font-semibold text-center"
-                                initial={{opacity: 0, y: "-100"}}
-                                transition={{type: "spring", stiffness: 50}}
-                                animate={
-                                    titleNumber === index
-                                        ? {
-                                            y: 0,
-                                            opacity: 1,
-                                        }
-                                        : {
-                                            y: titleNumber > index ? -150 : 150,
-                                            opacity: 0,
-                                        }
-                                }
-                            >
-                                {title}
-                            </motion.span>
-                        ))}
-                        </span>
+                    <h1 className="md:text-5xl text-3xl flex lg:flex-row flex-col mt-1 md:ml-3 ml-6">
+                        <span className="font-serif">I'm a <span className="font-semibold">Software Engineer</span></span>
                     </h1>
                     <p className="text-lg mt-1">Code. Optimize. Scale. Deliver.</p>
                     <div className="flex flex-row mt-5 gap-2 justify-center">

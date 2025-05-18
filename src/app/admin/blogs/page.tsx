@@ -3,7 +3,7 @@
 import React, {useEffect, useState} from "react";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import Link from "next/link";
-import {CirclePlus, Ellipsis, Pen, Trash2, User} from "lucide-react";
+import {CirclePlus, Ellipsis, Pen, Trash2} from "lucide-react";
 import {ResponseBlogs} from "@/api/dto/blog";
 import {GetPublicBlogs} from "@/api/blog";
 import {Blog} from "@/api/models/blog";

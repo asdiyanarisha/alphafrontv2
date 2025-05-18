@@ -1,11 +1,11 @@
 'use client'
 
 import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
-import React, {useEffect, useRef} from "react";
+import React from "react";
 import { Progress } from "@/components/ui/progress"
 import {MySkills, MyExperiences} from "@/data/headline";
 import Image from "next/image";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 
 const Headline = () => {

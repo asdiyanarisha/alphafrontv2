@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useMemo, useState, useEffect} from "react";
+import React, {useMemo, useState} from "react";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import { TagsInput } from "react-tag-input-component";
 import {Input} from "@/components/ui/input";
