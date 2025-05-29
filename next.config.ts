@@ -7,14 +7,15 @@ const nextConfig: NextConfig = {
             (() => {
                 const hostname = process.env.PUBLIC_HOST || '';
                 const port = process.env.PUBLIC_PORT || '';
+                const protocolEnv = process.env.PUBLIC_PROTOCOL || 'https';
 
                 return {
-                    protocol: "http",
+                    protocol: protocolEnv as 'http' | 'https',
                     hostname,
                     port: port || '',
                     pathname: '/**',
                 };
-            })(),
+            })(),   
         ],
     },
 };
