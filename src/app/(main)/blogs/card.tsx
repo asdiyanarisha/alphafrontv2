@@ -7,18 +7,11 @@ import Moment from 'moment';
 
 const CardBlog = ({ d }: {d: Blog}) => {
     return (
-        <div className="rounded-2xl xl:basis-1/4 lg:basis-1/3 self-stretch mx-1 mb-2 hover:shadow-2xl border border-solid shadow-lg border-slate-600">
+        <div className="rounded-2xl w-80 mx-2 mb-6 hover:shadow-2xl border border-slate-600 shadow-lg overflow-hidden">
             <div className="h-full">
-                <Link href={'/blogs/' + d.slug} className="">
-                    <div className="relative w-full">
-                        <Image className="m-0 lazy rounded-t-2xl h-52 w-96" src={d.url_image}
-                               width={400}
-                               height={30}
-                               quality={75} alt=""
-                               style={{
-                                   objectFit: 'cover',
-                               }}
-                        />
+                <Link href={'/blogs/' + d.slug}>
+                    <div className="relative w-full h-48 overflow-hidden">
+                        <Image src={d.url_image} alt="" fill quality={75} className="object-cover" />
                     </div>
                 </Link>
                 <div className="px-5 py-4">
